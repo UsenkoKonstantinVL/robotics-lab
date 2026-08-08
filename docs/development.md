@@ -7,6 +7,8 @@ Required tools:
 - CMake 3.24 or newer
 - Ninja
 - A compiler with C++20 support
+- MuJoCo 3.11 or newer, with `MUJOCO_HOME` set when installed outside a standard
+  system prefix
 - Python 3.11 or newer for scripts and future Python modules
 
 Run:

@@ -24,7 +24,8 @@ its implementation, tests, and documentation together.
 
 ## Quick start
 
-On a machine with CMake 3.24+, Ninja, and a C++20 compiler:
+On a machine with CMake 3.24+, Ninja, a C++20 compiler, and the MuJoCo 3.11+
+native SDK:
 
 ```bash
 cmake --preset dev

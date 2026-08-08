@@ -67,3 +67,14 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Python generated files and environments
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Local tooling and editor state
+.idea/
+.vscode/
+.DS_Store

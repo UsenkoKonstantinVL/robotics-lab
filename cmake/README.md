@@ -1,0 +1,6 @@
+# CMake support
+
+Reusable CMake functions, platform configuration, and toolchain files belong
+here. Module-specific build logic should remain in the module that uses it.
+
+Avoid placing generated files or third-party source code in this directory.

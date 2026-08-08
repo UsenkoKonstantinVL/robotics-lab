@@ -7,6 +7,8 @@ This directory is the source of truth for project documentation.
 - [`decisions/`](decisions/README.md) contains architecture decision records.
 - [`decisions/0001-use-mujoco-first-simulator.md`](decisions/0001-use-mujoco-first-simulator.md)
   selects the first simulation engine.
+- [`decisions/0002-use-cyclonedds-first-communication-provider.md`](decisions/0002-use-cyclonedds-first-communication-provider.md)
+  selects the first node communication provider.
 
 Documentation for a single module should live in that module. Cross-cutting
 documentation belongs here.

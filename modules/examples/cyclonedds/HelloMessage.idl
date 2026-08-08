@@ -1,0 +1,8 @@
+module robotics_lab_examples {
+  @final
+  struct HelloMessage {
+    string sender;
+    uint32 sequence_number;
+    string text;
+  };
+};

@@ -4,8 +4,9 @@ This directory contains the shared development image and small workflow
 scripts. It should describe a reproducible toolchain, not hold source code or
 machine-specific editor settings.
 
-The image includes the pinned MuJoCo native SDK and matching Python bindings.
-It supports Docker's `linux/amd64` and `linux/arm64` platforms.
+The image includes pinned MuJoCo and Cyclone DDS native SDKs with matching
+Python bindings. It supports Docker's `linux/amd64` and `linux/arm64`
+platforms.
 
 Use the development helper from the repository root:
 
@@ -34,3 +35,8 @@ dev/dev.sh exec \
 MuJoCo is installed at `/opt/mujoco`, exposed through `MUJOCO_HOME`, and its
 tools are available on `PATH`. Python uses the image-managed virtual environment
 at `/opt/robotics-lab/venv`.
+
+Cyclone DDS 11.0.1 and its C++ binding are installed at `/opt/cyclonedds`.
+`CYCLONEDDS_HOME`, `CMAKE_PREFIX_PATH`, `PATH`, and `LD_LIBRARY_PATH` expose the
+SDK, IDL compiler, and runtime libraries. The matching Python binding is built
+against this native installation in the image-managed virtual environment.

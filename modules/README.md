@@ -10,5 +10,8 @@ framework.
 Simulation integrations live under `sim/`. Engine meta modules expose external
 SDKs to implementation modules without leaking dependency-discovery logic.
 
+Communication integrations live under `communication/`. They provide the
+transport layer used by independent robotics nodes.
+
 Runnable demonstrations live under `examples/`. They show focused workflows
 without becoming part of the framework's public API.

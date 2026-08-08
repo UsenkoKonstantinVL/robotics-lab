@@ -6,3 +6,5 @@ over general-purpose abstractions.
 
 - [`mujoco_viewer`](mujoco_viewer/README.md) loads an MJCF model or scene in
   MuJoCo's interactive Simulate GUI.
+- [`cyclonedds`](cyclonedds/README.md) demonstrates publish/subscribe messaging
+  between C++ and Python processes.

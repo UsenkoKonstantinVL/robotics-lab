@@ -11,6 +11,12 @@ RUN apt-get update \
       cmake \
       curl \
       git \
+      libgl1 \
+      libx11-6 \
+      libxcursor1 \
+      libxi6 \
+      libxinerama1 \
+      libxrandr2 \
       ninja-build \
       python3 \
       python3-pip \

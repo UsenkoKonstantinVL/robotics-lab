@@ -5,7 +5,12 @@ services:
       dockerfile: dev/Dockerfile
     image: robotics-lab-dev:local
     working_dir: /workspace/robotics-lab
+    environment:
+      DISPLAY: ${DISPLAY:-:0}
+      XAUTHORITY: /tmp/.Xauthority
     volumes:
       - ..:/workspace/robotics-lab
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - ${XAUTHORITY:-/dev/null}:/tmp/.Xauthority:ro
     stdin_open: true
     tty: true

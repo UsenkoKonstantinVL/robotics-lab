@@ -44,13 +44,18 @@ class MujocoViewerTest(unittest.TestCase):
             ):
                 mujoco_viewer.model_path(str(path))
 
-    def test_launch_passes_resolved_path_to_viewer(self) -> None:
-        launcher = Mock()
+    def test_launch_passes_configuration_to_runner(self) -> None:
+        runner = Mock()
         path = Path("/tmp/scene.xml")
 
-        mujoco_viewer.launch(path, launcher)
+        mujoco_viewer.launch(path, "motor", "control.topic", runner)
 
-        launcher.assert_called_once_with(str(path))
+        runner.assert_called_once_with(path, "motor", "control.topic")
+
+    def test_clamp_command_uses_actuator_range(self) -> None:
+        self.assertEqual(mujoco_viewer.clamp_command(2.0, -1.0, 1.0), 1.0)
+        self.assertEqual(mujoco_viewer.clamp_command(-2.0, -1.0, 1.0), -1.0)
+        self.assertEqual(mujoco_viewer.clamp_command(0.25, -1.0, 1.0), 0.25)
 
 
 if __name__ == "__main__":

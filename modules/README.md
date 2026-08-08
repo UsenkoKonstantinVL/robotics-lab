@@ -13,5 +13,8 @@ SDKs to implementation modules without leaking dependency-discovery logic.
 Communication integrations live under `communication/`. They provide the
 transport layer used by independent robotics nodes.
 
+Shared IDL schemas live under `types/`. Manual and autonomous command producers
+live under `control/`.
+
 Runnable demonstrations live under `examples/`. They show focused workflows
 without becoming part of the framework's public API.

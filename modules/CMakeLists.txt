@@ -1,4 +1,6 @@
 add_subdirectory(core)
 add_subdirectory(communication)
+add_subdirectory(types)
+add_subdirectory(control)
 add_subdirectory(examples)
 add_subdirectory(sim)

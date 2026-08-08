@@ -10,6 +10,8 @@ Required tools:
 - MuJoCo 3.11 or newer, with `MUJOCO_HOME` set when installed outside a standard
   system prefix
 - Cyclone DDS and Cyclone DDS C++ 11.0.1 or newer, discoverable by CMake
+- cpp-tui 1.12.0 or newer, with `CPP_TUI_HOME` set when installed outside a
+  standard system prefix
 - Python 3.11 or newer for scripts and future Python modules
 
 Run:
@@ -48,6 +50,9 @@ The image also builds Cyclone DDS 11.0.1 and its C++ binding from
 checksum-verified source archives. Its Python package is built against that
 native installation so C++, Python, and the `idlc` code generator use the same
 version.
+
+The image also installs the checksum-verified cpp-tui 1.12.0 single-header
+library for interactive terminal applications.
 
 ## Adding a module
 

@@ -4,6 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG TARGETARCH
 ARG MUJOCO_VERSION=3.11.0
 ARG CYCLONEDDS_VERSION=11.0.1
+ARG CPP_TUI_VERSION=1.12.0
 
 RUN apt-get update \
     && apt-get install --yes --no-install-recommends \
@@ -95,6 +96,20 @@ RUN set -eux; \
 
 ENV CYCLONEDDS_HOME=/opt/cyclonedds
 
+RUN set -eux; \
+    cpp_tui_archive="cpp-tui-${CPP_TUI_VERSION}.tar.gz"; \
+    curl --fail --location --retry 3 \
+      --output "/tmp/${cpp_tui_archive}" \
+      "https://github.com/jonoton/cpp-tui/archive/refs/tags/v${CPP_TUI_VERSION}.tar.gz"; \
+    echo "192806f877c3c5e78445d760aad640d54b502ae7aeac34cf4a5d2d6977f8900c  /tmp/${cpp_tui_archive}" \
+      | sha256sum --check; \
+    mkdir --parents /opt/cpp-tui/include /tmp/cpp-tui; \
+    tar --extract --gzip --file "/tmp/${cpp_tui_archive}" \
+      --directory /tmp/cpp-tui --strip-components=1; \
+    cp /tmp/cpp-tui/cpptui.hpp /opt/cpp-tui/include/; \
+    cp /tmp/cpp-tui/LICENSE /opt/cpp-tui/; \
+    rm --recursive --force "/tmp/${cpp_tui_archive}" /tmp/cpp-tui
+
 RUN python3 -m venv /opt/robotics-lab/venv \
     && /opt/robotics-lab/venv/bin/pip install --no-cache-dir \
       --no-binary cyclonedds \
@@ -104,12 +119,14 @@ RUN python3 -m venv /opt/robotics-lab/venv \
     && test -f /opt/cyclonedds/include/ddscxx/dds/dds.hpp \
     && test -f /opt/cyclonedds/lib/libddsc.so \
     && test -f /opt/cyclonedds/lib/libddscxx.so \
+    && test -f /opt/cpp-tui/include/cpptui.hpp \
     && test -f /opt/mujoco/include/mujoco/mujoco.h \
     && test -f /opt/mujoco/lib/libmujoco.so \
     && /opt/robotics-lab/venv/bin/python -c \
       "import importlib.metadata, mujoco; assert importlib.metadata.version('cyclonedds') == '${CYCLONEDDS_VERSION}'; assert mujoco.__version__ == '${MUJOCO_VERSION}'; mujoco.MjModel.from_xml_string('<mujoco/>')"
 
 ENV MUJOCO_HOME=/opt/mujoco
+ENV CPP_TUI_HOME=/opt/cpp-tui
 ENV CMAKE_PREFIX_PATH=/opt/cyclonedds
 ENV LD_LIBRARY_PATH=/opt/mujoco/lib:/opt/cyclonedds/lib
 ENV PATH=/opt/robotics-lab/venv/bin:/opt/mujoco/bin:/opt/cyclonedds/bin:${PATH}

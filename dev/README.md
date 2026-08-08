@@ -40,3 +40,7 @@ Cyclone DDS 11.0.1 and its C++ binding are installed at `/opt/cyclonedds`.
 `CYCLONEDDS_HOME`, `CMAKE_PREFIX_PATH`, `PATH`, and `LD_LIBRARY_PATH` expose the
 SDK, IDL compiler, and runtime libraries. The matching Python binding is built
 against this native installation in the image-managed virtual environment.
+
+cpp-tui 1.12.0 is installed at `/opt/cpp-tui` and exposed through
+`CPP_TUI_HOME`. CMake discovers its single header through the project's
+`FindCppTui.cmake` module.

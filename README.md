@@ -1,5 +1,9 @@
 # Robotics Lab
 
+<p align="center">
+  <img src="media/logo.png" alt="Robotics Lab logo" width="320">
+</p>
+
 Robotics Lab is an experimental, open-source robotics framework. Its purpose is
 to explore robot control, communication, hardware abstraction, simulation, and
 developer tooling without depending on ROS or another robotics framework.

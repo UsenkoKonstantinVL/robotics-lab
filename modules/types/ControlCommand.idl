@@ -1,0 +1,6 @@
+module robotics_lab_types {
+  @final
+  struct ControlCommand {
+    float value;
+  };
+};

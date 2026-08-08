@@ -9,6 +9,8 @@ if(BUILD_TESTING)
   add_test(
     NAME examples.mujoco_viewer
     COMMAND
+      "${CMAKE_COMMAND}" -E env
+      "PYTHONPATH=${ROBOTICS_LAB_PYTHON_TYPES_DIR}"
       "${Python3_EXECUTABLE}" -m unittest discover
       -s "${CMAKE_CURRENT_SOURCE_DIR}/tests"
       -p "test_*.py"

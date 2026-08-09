@@ -33,11 +33,11 @@ int main() {
   try {
     dds::domain::DomainParticipant participant(
         org::eclipse::cyclonedds::domain::default_id());
-    dds::topic::Topic<robotics_lab_types::ControlCommand> topic(participant,
-                                                                kTopicName);
+    dds::topic::Topic<robotics_lab_control_dds::ControlCommand> topic(
+        participant, kTopicName);
     dds::pub::Publisher publisher(participant);
-    dds::pub::DataWriter<robotics_lab_types::ControlCommand> writer(publisher,
-                                                                    topic);
+    dds::pub::DataWriter<robotics_lab_control_dds::ControlCommand> writer(
+        publisher, topic);
 
     cpptui::Theme::set_theme(cpptui::Theme::Dark());
     cpptui::App app;
@@ -72,13 +72,13 @@ int main() {
     app.register_exit_key('q');
 
     app.add_timer(kPublishPeriodMs, [&] {
-      writer.write(robotics_lab_types::ControlCommand(pending_command));
+      writer.write(robotics_lab_control_dds::ControlCommand(pending_command));
       command_label->set_text(format_value("Command: ", pending_command));
       pending_command = 0.0F;
     });
 
     app.run(root);
-    writer.write(robotics_lab_types::ControlCommand(0.0F));
+    writer.write(robotics_lab_control_dds::ControlCommand(0.0F));
   } catch (const std::exception& error) {
     std::cerr << "control TUI failed: " << error.what() << '\n';
     return EXIT_FAILURE;

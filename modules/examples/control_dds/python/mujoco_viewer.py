@@ -71,11 +71,12 @@ def run_simulation(path: Path, actuator_name: str, topic_name: str) -> None:
         from cyclonedds.domain import DomainParticipant
         from cyclonedds.sub import DataReader
         from cyclonedds.topic import Topic
-        from robotics_lab_types import ControlCommand
+        from robotics_lab_control_dds import ControlCommand
     except ImportError as error:
         raise RuntimeError(
-            "Cyclone DDS and the generated robotics_lab_types Python package are "
-            "required; build the project and add its generated types to PYTHONPATH"
+            "Cyclone DDS and the generated robotics_lab_control_dds Python "
+            "package are required; build the project and add its generated types "
+            "to PYTHONPATH"
         ) from error
 
     if path.suffix.lower() == ".mjb":

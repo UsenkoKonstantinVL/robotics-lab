@@ -7,7 +7,7 @@ from pathlib import Path
 from unittest.mock import Mock
 
 
-MODULE_DIRECTORY = Path(__file__).resolve().parents[1]
+MODULE_DIRECTORY = Path(__file__).resolve().parents[1] / "python"
 sys.path.insert(0, str(MODULE_DIRECTORY))
 
 import mujoco_viewer  # noqa: E402

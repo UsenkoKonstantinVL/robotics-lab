@@ -1,4 +1,4 @@
-module robotics_lab_types {
+module robotics_lab_control_dds {
   @final
   struct ControlCommand {
     float value;

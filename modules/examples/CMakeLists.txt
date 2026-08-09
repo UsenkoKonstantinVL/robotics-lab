@@ -1,2 +1,2 @@
 add_subdirectory(cyclonedds)
-add_subdirectory(mujoco_viewer)
+add_subdirectory(control_dds)

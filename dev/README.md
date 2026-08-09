@@ -28,8 +28,10 @@ socket, and the current `XAUTHORITY` file so GUI tools such as the MuJoCo viewer
 can open windows on the host. For example:
 
 ```bash
-dev/dev.sh exec \
-  python3 modules/examples/mujoco_viewer/mujoco_viewer.py models/car/car.xml
+dev/dev.sh exec env \
+  PYTHONPATH=build/dev/modules/examples/control_dds/python_types \
+  python3 modules/examples/control_dds/python/mujoco_viewer.py \
+  models/car/car.xml
 ```
 
 MuJoCo is installed at `/opt/mujoco`, exposed through `MUJOCO_HOME`, and its
